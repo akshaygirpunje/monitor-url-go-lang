@@ -97,7 +97,7 @@ service/monitor-urls created
 deployment.apps/monitor-urls created
 ```
 
-Note: In [service.yml](service.yml) change `image: jeffcorpuz/monitor-urls:latest` to newly built Docker image you done in the set-up
+Note: In [service.yml](service.yml) change `image: akshaygirpunje/monitor-urls:latest` to newly built Docker image you done in the set-up
 
 -   View the deployment
 
@@ -197,5 +197,5 @@ sample_external_url_up{url="https://httpstat.us/503"} 0
 go test
 
 PASS
-ok      github.com/jeffcorpuz/monitor-urls-k8s  0.594s
+ok      github.com/akshaygirpunje/monitor-urls-k8s  0.594s
 ```
