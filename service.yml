@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitor-urls
+  labels:
+    app: monitor-urls
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: monitor-urls
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitor-urls
+  labels:
+    app: monitor-urls
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitor-urls
+  template:
+    metadata:
+      labels:
+        app: monitor-urls
+    spec:
+      containers:
+        - name: monitor-urls
+          image: akshaygirpunje/monitor-urls:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: LISTENING_PORT
+              value: "8080"
